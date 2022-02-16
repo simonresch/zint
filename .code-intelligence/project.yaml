@@ -2,7 +2,7 @@ description: >
   Zint uses raw data as input which can easily lead to memory errors. Fuzzing is specialized in finding those with little effort.
 
 ## The name of the container image used for building the fuzz tests
-build_container: "cifuzz/builders:zint"
+build_container: "cifuzz/builders:zint@sha256:33edd1583bc918fb8b9226560af2e7248f5780ee07adba2c769c1a4ab551af93"
 
 ## The name of the container image used for running the fuzz tests. If
 ## unspecified, the image of the build container is used.
