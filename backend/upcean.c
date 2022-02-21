@@ -688,7 +688,8 @@ INTERNAL int eanx(struct zint_symbol *symbol, unsigned char source[], int src_le
     unsigned char local_source[20] = {0}; /* Allow 13 + "+" + 5 + 1 */
     int latch, reader, writer;
     int with_addon;
-    int error_number, i, plus_count;
+    int error_number, i;
+
     int addon_gap = 0;
     int first_part_len, second_part_len;
 
@@ -712,18 +713,6 @@ INTERNAL int eanx(struct zint_symbol *symbol, unsigned char source[], int src_le
             strcpy(symbol->errtxt, "285: Invalid characters in input");
             return error_number;
         }
-    }
-    
-    /* Check for multiple '+' characters */
-    plus_count = 0;
-    for (i = 0; i < src_len; i++) {
-        if (source[i] == '+') {
-            plus_count++;
-        }
-    }
-    if (plus_count > 1) {
-        strcpy(symbol->errtxt, "293: Invalid add-on data");
-        return ZINT_ERROR_INVALID_DATA;
     }
 
     /* Add leading zeroes, checking max lengths of parts */
