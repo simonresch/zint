@@ -27,7 +27,7 @@ jobs:
       - id: build-fuzzers
         name: Build Fuzzers
         run: |
-          ci-fuzz/bin/ci-build fuzzers --directory=$GITHUB_WORKSPACE/$CHECKOUT_DIR/ --git_commit_sha=$GITHUB_SHA --git_branch=$GITHUB_REF_NAME
+          ci-fuzz/bin/ci-build fuzzers --directory=$GITHUB_WORKSPACE/$CHECKOUT_DIR/ --git_commit_sha=$GITHUB_SHA --git_branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
           mkdir $GITHUB_WORKSPACE/$CHECKOUT_DIR/fuzzing_artifact
           cd $GITHUB_WORKSPACE/$CHECKOUT_DIR/fuzzing_artifact
           tar -xf ../fuzzing-artifacts.tar.gz
